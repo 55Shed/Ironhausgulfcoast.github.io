@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IronHaus Gulf Coast — Container Apartment Development</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #0C4A6E;
+      --teal:   #0369A1;
+      --teal2:  #0EA5E9;
+      --mint:   #BAE6FD;
+      --gold:   #D4A929;
+      --gold2:  #92400E;
+      --white:  #FFFFFF;
+      --offwhite: #F0F9FF;
+      --dark:   #0C1A2E;
+      --gray:   #94A3B8;
+      --steel:  #E2E8F0;
+      --green:  #065F46;
+      --purple: #6B21A8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--dark);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2.5rem;
+      background: rgba(12,26,46,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(14,165,233,0.15);
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 3px;
+      color: var(--white);
+    }
+    .nav-logo span { color: var(--teal2); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.8rem; font-weight: 500; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--gray);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--teal2); }
+    .nav-cta {
+      background: var(--teal2); color: var(--dark);
+      padding: 0.5rem 1.25rem; border-radius: 4px;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--mint); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 6rem 2.5rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(14,165,233,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-left { max-width: 620px; }
+
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem; letter-spacing: 4px; color: var(--teal2);
+      text-transform: uppercase; margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block;
+      width: 40px; height: 1px; background: var(--teal2);
+    }
+
+    h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4rem, 8vw, 7rem);
+      line-height: 0.95;
+      letter-spacing: 2px;
+      margin-bottom: 1.5rem;
+    }
+    h1 .line1 { display: block; color: var(--white); }
+    h1 .line2 { display: block; color: var(--teal2); }
+    h1 .line3 { display: block; color: var(--gold); font-size: 0.55em; letter-spacing: 6px; }
+
+    .hero-desc {
+      font-size: 1rem; line-height: 1.7; color: rgba(255,255,255,0.65);
+      max-width: 480px; margin-bottom: 2.5rem;
+    }
+
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--teal2); color: var(--dark);
+      padding: 0.875rem 2rem; border-radius: 4px;
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-primary:hover { background: var(--mint); transform: translateY(-2px); }
+    .btn-outline {
+      border: 1px solid rgba(14,165,233,0.4); color: var(--teal2);
+      padding: 0.875rem 2rem; border-radius: 4px;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 2px;
+      text-transform: uppercase; text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--teal2); background: rgba(14,165,233,0.08); }
+
+    /* Hero building diagram */
+    .hero-right {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 1rem;
+      padding-left: 2rem;
+    }
+
+    .site-diagram {
+      width: 100%; max-width: 480px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(14,165,233,0.15);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+    .diagram-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem; letter-spacing: 3px; color: var(--gray);
+      text-transform: uppercase; text-align: center;
+      margin-bottom: 1.25rem;
+    }
+    .diagram-row {
+      display: grid; grid-template-columns: 1fr auto 1fr;
+      gap: 0.5rem; margin-bottom: 0.5rem;
+      align-items: stretch;
+    }
+    .diag-building {
+      background: rgba(3,105,161,0.15);
+      border: 1px solid rgba(14,165,233,0.25);
+      border-radius: 6px; padding: 0.75rem 0.5rem;
+      text-align: center;
+    }
+    .diag-building .bname {
+      font-family: 'Bebas Neue', monospace;
+      font-size: 0.85rem; letter-spacing: 2px;
+      color: var(--teal2); display: block; margin-bottom: 0.5rem;
+    }
+    .diag-units {
+      display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px;
+    }
+    .diag-unit {
+      background: rgba(14,165,233,0.3);
+      border: 1px solid rgba(14,165,233,0.4);
+      border-radius: 2px; aspect-ratio: 1;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .diag-unit.top { background: rgba(14,165,233,0.5); }
+    .diag-sep {
+      background: rgba(14,165,233,0.06);
+      border: 1px solid rgba(14,165,233,0.15);
+      border-radius: 4px; padding: 0.3rem;
+      display: flex; align-items: center; justify-content: center;
+      min-width: 52px;
+    }
+    .diag-laundry {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 2px;
+    }
+    .diag-laundry span {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.45rem; color: #A78BFA; letter-spacing: 1px;
+      text-transform: uppercase; text-align: center;
+    }
+    .diag-office-row {
+      display: flex; justify-content: flex-end; margin-top: 0.5rem;
+    }
+    .diag-office {
+      background: rgba(212,169,41,0.1);
+      border: 1px solid rgba(212,169,41,0.25);
+      border-radius: 6px; padding: 0.5rem 1rem;
+      text-align: center;
+    }
+    .diag-office span {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.55rem; color: var(--gold); letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .diag-slab {
+      background: rgba(148,163,184,0.1);
+      border-top: 1px dashed rgba(148,163,184,0.2);
+      border-bottom: 1px dashed rgba(148,163,184,0.2);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.45rem; color: var(--gray);
+      text-align: center; padding: 0.2rem;
+      letter-spacing: 2px;
+    }
+
+    /* Stats strip */
+    .hero-stats {
+      width: 100%; max-width: 480px;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 0.5rem;
+    }
+    .stat-pill {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 6px; padding: 0.75rem 0.5rem;
+      text-align: center;
+    }
+    .stat-pill .sv {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.35rem; color: var(--teal2);
+      letter-spacing: 1px; display: block;
+    }
+    .stat-pill .sl {
+      font-size: 0.6rem; color: var(--gray);
+      letter-spacing: 1px; text-transform: uppercase;
+    }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 6rem 2.5rem; }
+    .section-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem; letter-spacing: 4px; color: var(--teal2);
+      text-transform: uppercase; margin-bottom: 0.75rem;
+    }
+    h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      letter-spacing: 2px; line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .section-sub {
+      font-size: 1rem; color: rgba(255,255,255,0.55);
+      line-height: 1.7; max-width: 560px; margin-bottom: 3rem;
+    }
+
+    /* ── ABOUT SECTION ── */
+    #about { background: var(--dark); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center;
+    }
+    .about-text h2 { color: var(--white); }
+    .about-features { display: flex; flex-direction: column; gap: 1.25rem; }
+    .feature-item {
+      display: flex; gap: 1rem; align-items: flex-start;
+      padding: 1.25rem;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-left: 3px solid var(--teal2);
+      border-radius: 0 6px 6px 0;
+    }
+    .feature-icon {
+      width: 36px; height: 36px; border-radius: 6px;
+      background: rgba(14,165,233,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0;
+    }
+    .feature-text h4 {
+      font-size: 0.85rem; font-weight: 600; color: var(--white);
+      margin-bottom: 0.25rem;
+    }
+    .feature-text p { font-size: 0.8rem; color: var(--gray); line-height: 1.5; }
+
+    /* ── BUILDINGS SECTION ── */
+    #buildings {
+      background: rgba(3,105,161,0.04);
+      border-top: 1px solid rgba(14,165,233,0.1);
+      border-bottom: 1px solid rgba(14,165,233,0.1);
+    }
+    .buildings-header { text-align: center; margin-bottom: 3rem; }
+    .buildings-header h2 { color: var(--white); }
+    .buildings-header .section-sub { margin: 0 auto 1rem; }
+
+    .buildings-grid {
+      display: grid; grid-template-columns: 1fr auto 1fr;
+      gap: 1rem; max-width: 1100px; margin: 0 auto;
+      align-items: stretch;
+    }
+    .building-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(14,165,233,0.15);
+      border-radius: 10px; overflow: hidden;
+    }
+    .building-header {
+      background: var(--navy);
+      padding: 1.25rem 1.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .building-header h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem; letter-spacing: 2px; color: var(--white);
+    }
+    .building-badge {
+      background: rgba(14,165,233,0.2); color: var(--teal2);
+      font-size: 0.65rem; font-weight: 600; letter-spacing: 2px;
+      padding: 0.25rem 0.6rem; border-radius: 4px;
+      text-transform: uppercase;
+    }
+    .floor { padding: 1.25rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .floor-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem; letter-spacing: 3px; color: var(--teal2);
+      text-transform: uppercase; margin-bottom: 0.75rem;
+    }
+    .units-row { display: flex; gap: 6px; }
+    .unit-box {
+      flex: 1; background: rgba(14,165,233,0.12);
+      border: 1px solid rgba(14,165,233,0.25);
+      border-radius: 4px; padding: 0.6rem 0.25rem;
+      text-align: center; cursor: pointer;
+      transition: all 0.2s;
+    }
+    .unit-box:hover { background: rgba(14,165,233,0.25); transform: translateY(-2px); }
+    .unit-box.top { background: rgba(14,165,233,0.2); border-color: rgba(14,165,233,0.4); }
+    .unit-box .unum {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem; color: var(--white); font-weight: 500;
+    }
+    .unit-box .usf { font-size: 0.55rem; color: var(--gray); }
+    .building-footer {
+      padding: 1rem 1.5rem;
+      background: rgba(14,165,233,0.05);
+      display: flex; gap: 1.5rem;
+    }
+    .bstat { display: flex; flex-direction: column; gap: 0.15rem; }
+    .bstat .bval {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.25rem; color: var(--teal2); letter-spacing: 1px;
+    }
+    .bstat .blbl { font-size: 0.6rem; color: var(--gray); letter-spacing: 1px; text-transform: uppercase; }
+
+    /* Laundromat column */
+    .laundry-col {
+      display: flex; flex-direction: column; gap: 0.75rem;
+      align-items: center; justify-content: center;
+      min-width: 120px;
+    }
+    .laundry-card {
+      background: rgba(107,33,168,0.1);
+      border: 1px solid rgba(107,33,168,0.3);
+      border-radius: 10px; padding: 1.5rem 1rem;
+      text-align: center; width: 100%;
+    }
+    .laundry-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+    .laundry-card h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem; letter-spacing: 2px; color: #A78BFA;
+      margin-bottom: 0.5rem;
+    }
+    .laundry-card p { font-size: 0.7rem; color: var(--gray); line-height: 1.5; }
+    .laundry-divider {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.55rem; color: var(--gray); letter-spacing: 2px;
+      writing-mode: vertical-rl; text-transform: uppercase;
+    }
+
+    /* ── UNIT SPECS ── */
+    #specs { background: var(--dark); }
+    .specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .specs-visual {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(14,165,233,0.12);
+      border-radius: 10px; overflow: hidden;
+    }
+    .floor-plan-header {
+      background: var(--navy); padding: 1rem 1.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .floor-plan-header h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.2rem; letter-spacing: 2px; color: var(--white);
+    }
+    .fp-badge {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem; color: var(--gold); letter-spacing: 2px;
+    }
+    .floor-plan-grid {
+      display: grid; padding: 1.25rem;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto auto;
+      gap: 0.5rem;
+    }
+    .room {
+      padding: 1rem 0.75rem; border-radius: 6px;
+      background: rgba(3,105,161,0.08);
+      border: 1px solid rgba(14,165,233,0.12);
+    }
+    .room.living { grid-column: 1 / 3; background: rgba(3,105,161,0.14); border-color: rgba(14,165,233,0.2); }
+    .room.bath { background: rgba(6,95,70,0.15); border-color: rgba(6,95,70,0.3); }
+    .room-name {
+      font-size: 0.65rem; font-weight: 600; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--teal2); margin-bottom: 0.2rem;
+    }
+    .room.bath .room-name { color: #34D399; }
+    .room-sf {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem; color: var(--white); letter-spacing: 1px;
+    }
+    .room-detail { font-size: 0.6rem; color: var(--gray); margin-top: 0.15rem; }
+
+    .specs-list { display: flex; flex-direction: column; gap: 0.75rem; }
+    .spec-row {
+      display: flex; justify-content: space-between;
+      align-items: center; padding: 0.875rem 1rem;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 6px;
+    }
+    .spec-row:nth-child(odd) { background: rgba(14,165,233,0.04); }
+    .spec-key { font-size: 0.8rem; color: var(--gray); }
+    .spec-val { font-size: 0.85rem; font-weight: 600; color: var(--white); text-align: right; }
+    .spec-val.highlight { color: var(--teal2); }
+    .spec-val.gold { color: var(--gold); }
+
+    /* ── FINANCIALS ── */
+    #financials {
+      background: rgba(12,74,110,0.06);
+      border-top: 1px solid rgba(14,165,233,0.1);
+      border-bottom: 1px solid rgba(14,165,233,0.1);
+    }
+    .fin-header { text-align: center; margin-bottom: 3rem; }
+    .fin-header h2 { color: var(--white); }
+    .fin-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 3rem; }
+    .fin-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px; padding: 1.75rem 1.5rem;
+      text-align: center;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .fin-card:hover { transform: translateY(-4px); border-color: rgba(14,165,233,0.3); }
+    .fin-card.highlight {
+      border-color: rgba(14,165,233,0.3);
+      background: rgba(14,165,233,0.05);
+    }
+    .fin-card.gold-card {
+      border-color: rgba(212,169,41,0.3);
+      background: rgba(212,169,41,0.05);
+    }
+    .fin-icon { font-size: 1.75rem; margin-bottom: 0.75rem; }
+    .fin-value {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem; letter-spacing: 1px;
+      color: var(--teal2); display: block; line-height: 1;
+    }
+    .fin-card.gold-card .fin-value { color: var(--gold); }
+    .fin-label {
+      font-size: 0.7rem; color: var(--gray);
+      letter-spacing: 2px; text-transform: uppercase; margin-top: 0.3rem;
+    }
+    .fin-sub { font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-top: 0.5rem; }
+
+    /* Profit breakdown */
+    .profit-breakdown {
+      background: rgba(6,95,70,0.08);
+      border: 1px solid rgba(6,95,70,0.2);
+      border-radius: 10px; padding: 2rem;
+      max-width: 700px; margin: 0 auto;
+    }
+    .profit-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem; letter-spacing: 2px; color: var(--white);
+      margin-bottom: 1.25rem; text-align: center;
+    }
+    .profit-row {
+      display: flex; justify-content: space-between;
+      align-items: center; padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .profit-row:last-child { border-bottom: none; padding-top: 1rem; margin-top: 0.5rem; }
+    .profit-row.total { border-top: 1px solid rgba(52,211,153,0.3); }
+    .profit-key { font-size: 0.85rem; color: var(--gray); }
+    .profit-val { font-size: 0.9rem; font-weight: 600; color: var(--white); }
+    .profit-val.green { color: #34D399; }
+    .profit-val.gold { color: var(--gold); }
+    .profit-val.big {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem; color: #34D399; letter-spacing: 1px;
+    }
+
+    /* ── LAUNDROMAT ── */
+    #laundromat { background: var(--dark); }
+    .laundromat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .machines-visual {
+      background: rgba(107,33,168,0.06);
+      border: 1px solid rgba(107,33,168,0.2);
+      border-radius: 10px; padding: 2rem;
+    }
+    .machines-header {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.2rem; letter-spacing: 3px; color: #A78BFA;
+      margin-bottom: 1.5rem; text-align: center;
+    }
+    .machines-grid {
+      display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px;
+      margin-bottom: 1rem;
+    }
+    .machine {
+      aspect-ratio: 1; border-radius: 6px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 3px;
+      font-size: 0.6rem; font-weight: 600;
+      letter-spacing: 1px; cursor: pointer;
+      transition: transform 0.15s;
+    }
+    .machine:hover { transform: scale(1.05); }
+    .machine.washer { background: rgba(14,165,233,0.15); border: 1px solid rgba(14,165,233,0.3); color: var(--teal2); }
+    .machine.dryer { background: rgba(212,169,41,0.15); border: 1px solid rgba(212,169,41,0.3); color: var(--gold); }
+    .machine-icon { font-size: 1.25rem; }
+    .machines-label {
+      display: flex; justify-content: space-between;
+      font-size: 0.65rem; color: var(--gray); letter-spacing: 1px;
+      margin-top: 0.75rem;
+    }
+    .pay-badge {
+      background: rgba(107,33,168,0.2); border: 1px solid rgba(107,33,168,0.3);
+      border-radius: 6px; padding: 0.875rem 1rem; text-align: center;
+      margin-top: 1rem;
+    }
+    .pay-badge h5 {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem; letter-spacing: 3px; color: #A78BFA;
+      text-transform: uppercase; margin-bottom: 0.3rem;
+    }
+    .pay-badge p { font-size: 0.75rem; color: var(--gray); }
+    .laundry-stats { display: flex; flex-direction: column; gap: 1rem; }
+    .lstat {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1rem 1.25rem;
+      background: rgba(107,33,168,0.06);
+      border: 1px solid rgba(107,33,168,0.15);
+      border-radius: 8px;
+    }
+    .lstat-icon { font-size: 1.5rem; }
+    .lstat-text h5 { font-size: 0.85rem; font-weight: 600; color: var(--white); margin-bottom: 0.2rem; }
+    .lstat-text p { font-size: 0.75rem; color: var(--gray); }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: rgba(12,74,110,0.08);
+      border-top: 1px solid rgba(14,165,233,0.1);
+    }
+    .contact-inner { max-width: 700px; margin: 0 auto; text-align: center; }
+    .contact-inner h2 { color: var(--white); margin-bottom: 0.75rem; }
+    .contact-inner .section-sub { margin: 0 auto 2.5rem; }
+    .contact-cards {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1rem; margin-bottom: 2.5rem;
+    }
+    .contact-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 8px; padding: 1.25rem 1rem;
+      text-align: center;
+    }
+    .contact-card .cc-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .contact-card .cc-label {
+      font-size: 0.6rem; letter-spacing: 2px; color: var(--gray);
+      text-transform: uppercase; margin-bottom: 0.3rem;
+    }
+    .contact-card .cc-val { font-size: 0.85rem; color: var(--white); font-weight: 500; }
+    .contact-card a { color: var(--teal2); text-decoration: none; }
+
+    .confidential-note {
+      font-size: 0.7rem; color: var(--gray); line-height: 1.6;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 6px; padding: 1rem 1.5rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: rgba(0,0,0,0.3);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 2rem 2.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.2rem; letter-spacing: 3px; color: var(--white);
+    }
+    .footer-logo span { color: var(--teal2); }
+    .footer-copy { font-size: 0.7rem; color: var(--gray); }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { font-size: 0.7rem; color: var(--gray); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--teal2); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { display: none; }
+      .about-grid, .specs-grid, .laundromat-grid { grid-template-columns: 1fr; }
+      .buildings-grid { grid-template-columns: 1fr; }
+      .laundry-col { flex-direction: row; min-width: unset; }
+      .laundry-divider { display: none; }
+      .fin-grid { grid-template-columns: 1fr 1fr; }
+      .contact-cards { grid-template-columns: 1fr; }
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      section { padding: 4rem 1.5rem; }
+    }
+
+    /* ── PHOTO GALLERY ── */
+    #gallery {
+      background: rgba(12,74,110,0.06);
+      border-top: 1px solid rgba(14,165,233,0.1);
+      border-bottom: 1px solid rgba(14,165,233,0.1);
+    }
+    .gallery-header { text-align:center; margin-bottom:2.5rem; }
+    .gallery-header h2 { color:var(--white); }
+    .gallery-grid {
+      display:grid;
+      grid-template-columns: repeat(3,1fr);
+      grid-template-rows: auto auto;
+      gap:0.75rem;
+      max-width:1100px; margin:0 auto;
+    }
+    .gallery-item {
+      position:relative; overflow:hidden;
+      border-radius:8px; cursor:pointer;
+      border:1px solid rgba(14,165,233,0.1);
+    }
+    .gallery-item.tall { grid-row: span 2; }
+    .gallery-item.wide { grid-column: span 2; }
+    .gallery-img {
+      width:100%; height:100%; min-height:220px;
+      object-fit:cover; display:block;
+      transition:transform 0.4s ease;
+      background:rgba(3,105,161,0.1);
+    }
+    .gallery-item.tall .gallery-img { min-height:460px; }
+    .gallery-item.wide .gallery-img { min-height:280px; }
+    .gallery-item:hover .gallery-img { transform:scale(1.04); }
+    .gallery-caption {
+      position:absolute; bottom:0; left:0; right:0;
+      background:linear-gradient(transparent, rgba(12,26,46,0.92));
+      padding:1.5rem 1rem 0.875rem;
+      font-size:0.75rem; font-weight:600;
+      letter-spacing:2px; color:var(--white);
+      text-transform:uppercase;
+    }
+    .gallery-caption span { color:var(--teal2); font-family:'DM Mono',monospace; }
+
+    /* Placeholder gallery items (image search results) */
+    .gal-placeholder {
+      width:100%; display:flex; flex-direction:column;
+      align-items:center; justify-content:center;
+      background:rgba(3,105,161,0.08);
+      border:1px solid rgba(14,165,233,0.15);
+      border-radius:8px; gap:0.5rem;
+      padding:2rem 1rem; text-align:center;
+    }
+    .gal-placeholder.tall { min-height:460px; }
+    .gal-placeholder.wide { min-height:280px; }
+    .gal-placeholder.reg { min-height:220px; }
+    .gal-icon { font-size:2.5rem; }
+    .gal-title { font-size:0.75rem; font-weight:600; letter-spacing:2px; color:var(--teal2); text-transform:uppercase; }
+    .gal-sub { font-size:0.65rem; color:var(--gray); }
+
+    /* ── DOWNLOAD SECTION ── */
+    #download {
+      background:var(--dark);
+      padding:4rem 2.5rem;
+    }
+    .download-inner {
+      max-width:900px; margin:0 auto;
+      background:rgba(14,165,233,0.05);
+      border:1px solid rgba(14,165,233,0.15);
+      border-radius:12px; padding:2.5rem;
+      display:grid; grid-template-columns:1fr auto;
+      gap:2rem; align-items:center;
+    }
+    .download-text h3 {
+      font-family:'Bebas Neue',sans-serif;
+      font-size:2rem; letter-spacing:2px; color:var(--white);
+      margin-bottom:0.5rem;
+    }
+    .download-text p { font-size:0.85rem; color:var(--gray); line-height:1.7; }
+    .download-badges {
+      display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:1rem;
+    }
+    .download-badge {
+      background:rgba(14,165,233,0.1); border:1px solid rgba(14,165,233,0.2);
+      color:var(--teal2); font-size:0.65rem; font-weight:600;
+      letter-spacing:1px; padding:0.3rem 0.7rem; border-radius:4px;
+      text-transform:uppercase;
+    }
+    .download-btns { display:flex; flex-direction:column; gap:0.75rem; align-items:flex-end; }
+    .btn-download {
+      display:inline-flex; align-items:center; gap:0.6rem;
+      background:var(--teal2); color:var(--dark);
+      padding:0.875rem 1.5rem; border-radius:6px;
+      font-size:0.8rem; font-weight:700; letter-spacing:1px;
+      text-transform:uppercase; text-decoration:none; cursor:pointer;
+      border:none; transition:all 0.2s; white-space:nowrap;
+    }
+    .btn-download:hover { background:var(--mint); transform:translateY(-2px); }
+    .btn-download.gold { background:var(--gold); }
+    .btn-download.gold:hover { background:#F59E0B; }
+    .download-note { font-size:0.65rem; color:var(--gray); text-align:right; }
+
+    /* ── CONTACT FORM ── */
+    .contact-form-wrap {
+      background:rgba(255,255,255,0.02);
+      border:1px solid rgba(255,255,255,0.07);
+      border-radius:10px; padding:2rem;
+      margin-top:2rem; max-width:700px; margin-left:auto; margin-right:auto;
+    }
+    .form-title {
+      font-family:'Bebas Neue',sans-serif;
+      font-size:1.5rem; letter-spacing:2px; color:var(--white);
+      margin-bottom:1.25rem; text-align:center;
+    }
+    .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+    .form-group { display:flex; flex-direction:column; gap:0.4rem; }
+    .form-group.full { grid-column:1/3; }
+    .form-group label {
+      font-size:0.65rem; font-weight:600; letter-spacing:2px;
+      color:var(--gray); text-transform:uppercase;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.1);
+      border-radius:6px; padding:0.75rem 1rem;
+      font-size:0.875rem; color:var(--white);
+      font-family:'Inter',sans-serif;
+      outline:none; transition:border-color 0.2s;
+      width:100%;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color:rgba(255,255,255,0.25); }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color:var(--teal2); }
+    .form-group select option { background:var(--dark); }
+    .form-group textarea { resize:vertical; min-height:100px; }
+    .form-submit {
+      width:100%; margin-top:1.25rem;
+      background:var(--teal2); color:var(--dark);
+      border:none; border-radius:6px;
+      padding:1rem; font-size:0.875rem; font-weight:700;
+      letter-spacing:2px; text-transform:uppercase;
+      cursor:pointer; transition:all 0.2s; font-family:'Inter',sans-serif;
+    }
+    .form-submit:hover { background:var(--mint); transform:translateY(-2px); }
+    .form-success {
+      display:none; text-align:center; padding:1.5rem;
+    }
+    .form-success .check { font-size:2.5rem; margin-bottom:0.75rem; }
+    .form-success h4 { color:var(--white); margin-bottom:0.5rem; }
+    .form-success p { color:var(--gray); font-size:0.85rem; }
+
+    @media(max-width:900px){
+      .download-inner { grid-template-columns:1fr; }
+      .download-btns { align-items:flex-start; }
+      .download-note { text-align:left; }
+      .form-grid { grid-template-columns:1fr; }
+      .form-group.full { grid-column:1; }
+      .gallery-grid { grid-template-columns:1fr 1fr; }
+      .gallery-item.tall { grid-row:span 1; }
+      .gallery-item.wide { grid-column:1/3; }
+      .gal-placeholder.tall { min-height:220px; }
+    }
+    @media(max-width:600px){
+      .gallery-grid { grid-template-columns:1fr; }
+      .gallery-item.wide,.gallery-item.tall { grid-column:1; grid-row:span 1; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">IRON<span>HAUS</span></div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#buildings">Buildings</a></li>
+      <li><a href="#specs">Units</a></li>
+      <li><a href="#financials">Financials</a></li>
+      <li><a href="#laundromat">Amenities</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#download">Download</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Get Proposal</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Mississippi Gulf Coast · Gulf Coast, MS</p>
+      <h1>
+        <span class="line1">IRONHAUS</span>
+        <span class="line2">GULF COAST</span>
+        <span class="line3">Container Apartment Complex</span>
+      </h1>
+      <p class="hero-desc">
+        A 20-unit modular residential development built from repurposed ISO shipping containers.
+        Two 2-story buildings, a shared laundromat, and a property management office — all on one Gulf Coast property.
+        960 SF per unit · 2 bedrooms · Full tub/shower combo.
+      </p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">Request Full Proposal</a>
+        <a href="#financials" class="btn-outline">View Financials</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="site-diagram">
+        <p class="diagram-label">Property Site Plan — 4 Buildings</p>
+        <div class="diagram-row">
+          <div class="diag-building">
+            <span class="bname">Building A</span>
+            <div class="diag-units">
+              <div class="diag-unit top"></div><div class="diag-unit top"></div><div class="diag-unit top"></div><div class="diag-unit top"></div><div class="diag-unit top"></div>
+            </div>
+            <div class="diag-slab">─ floor slab ─</div>
+            <div class="diag-units">
+              <div class="diag-unit"></div><div class="diag-unit"></div><div class="diag-unit"></div><div class="diag-unit"></div><div class="diag-unit"></div>
+            </div>
+          </div>
+          <div class="diag-sep">
+            <div class="diag-laundry">
+              <span>🫧</span>
+              <span>Laundro-mat</span>
+              <span>10W+10D</span>
+            </div>
+          </div>
+          <div class="diag-building">
+            <span class="bname">Building B</span>
+            <div class="diag-units">
+              <div class="diag-unit top"></div><div class="diag-unit top"></div><div class="diag-unit top"></div><div class="diag-unit top"></div><div class="diag-unit top"></div>
+            </div>
+            <div class="diag-slab">─ floor slab ─</div>
+            <div class="diag-units">
+              <div class="diag-unit"></div><div class="diag-unit"></div><div class="diag-unit"></div><div class="diag-unit"></div><div class="diag-unit"></div>
+            </div>
+          </div>
+        </div>
+        <div class="diag-office-row">
+          <div class="diag-office">
+            <span>🏢 Property Management Office · ~1,000 SF</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-pill"><span class="sv">20</span><span class="sl">Units</span></div>
+        <div class="stat-pill"><span class="sv">960</span><span class="sl">SF Each</span></div>
+        <div class="stat-pill"><span class="sv">63</span><span class="sl">Containers</span></div>
+        <div class="stat-pill"><span class="sv">$4.4M</span><span class="sl">Budget</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-grid">
+      <div class="about-text">
+        <p class="section-eyebrow">About The Project</p>
+        <h2>Gulf Coast Housing Built Different</h2>
+        <p class="section-sub">IronHaus Gulf Coast LLC develops high-quality modular housing using repurposed ISO shipping containers — durable, hurricane-resistant, and distinctively coastal.</p>
+        <div style="margin-top:1.5rem">
+          <p style="font-size:0.9rem;color:rgba(255,255,255,0.6);line-height:1.8">
+            <strong style="color:var(--white)">Shedrick Peters, Managing Member</strong><br>
+            IronHaus Gulf Coast LLC · Pass Christian, Mississippi<br>
+            info@ironhausgulfcoast.com · (228) 731-6660
+          </p>
+        </div>
+      </div>
+      <div class="about-features">
+        <div class="feature-item">
+          <div class="feature-icon">🔩</div>
+          <div class="feature-text">
+            <h4>Cor-Ten Steel Construction</h4>
+            <p>ISO containers naturally resist Gulf Coast salt air, humidity, and hurricane conditions — outlasting wood-frame construction.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🌊</div>
+          <div class="feature-text">
+            <h4>FEMA Elevated Foundation</h4>
+            <p>Reinforced concrete pier foundation on both apartment buildings — elevated above Base Flood Elevation on the Gulf Coast.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🏠</div>
+          <div class="feature-text">
+            <h4>960 SF — Above Market Average</h4>
+            <p>Average Gulf Coast 2-bedroom is 850–950 SF. Our units are larger with 9ft 6in ceilings — commanding premium rents.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">💰</div>
+          <div class="feature-text">
+            <h4>Build & Sell Strategy</h4>
+            <p>Construct, stabilize at 90%+ occupancy, sell to investor at Month 18. Target total profit: $1,029,822.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUILDINGS -->
+  <section id="buildings">
+    <div class="buildings-header">
+      <p class="section-eyebrow">Property Configuration</p>
+      <h2>Two Buildings · One Property</h2>
+      <p class="section-sub">Building A and Building B are separate 2-story structures positioned parallel on the same lot, with the laundromat centered between them for equal access by all 20 tenants.</p>
+    </div>
+
+    <div class="buildings-grid">
+      <!-- Building A -->
+      <div class="building-card">
+        <div class="building-header">
+          <h3>Building A — Section A</h3>
+          <span class="building-badge">10 Units</span>
+        </div>
+        <div class="floor">
+          <p class="floor-label">Story 2 — Top Floor</p>
+          <div class="units-row">
+            <div class="unit-box top"><div class="unum">A6</div><div class="usf">960 SF</div></div>
+            <div class="unit-box top"><div class="unum">A7</div><div class="usf">960 SF</div></div>
+            <div class="unit-box top"><div class="unum">A8</div><div class="usf">960 SF</div></div>
+            <div class="unit-box top"><div class="unum">A9</div><div class="usf">960 SF</div></div>
+            <div class="unit-box top"><div class="unum">A10</div><div class="usf">960 SF</div></div>
+          </div>
+        </div>
+        <div class="floor">
+          <p class="floor-label">Story 1 — Bottom Floor</p>
+          <div class="units-row">
+            <div class="unit-box"><div class="unum">A1</div><div class="usf">960 SF</div></div>
+            <div class="unit-box"><div class="unum">A2</div><div class="usf">960 SF</div></div>
+            <div class="unit-box"><div class="unum">A3</div><div class="usf">960 SF</div></div>
+            <div class="unit-box"><div class="unum">A4</div><div class="usf">960 SF</div></div>
+            <div class="unit-box"><div class="unum">A5</div><div class="usf">960 SF</div></div>
+          </div>
+        </div>
+        <div class="building-footer">
+          <div class="bstat"><span class="bval">10</span><span class="blbl">Units</span></div>
+          <div class="bstat"><span class="bval">960 SF</span><span class="blbl">Per Unit</span></div>
+          <div class="bstat"><span class="bval">$1,500–$1,600</span><span class="blbl">Est. Rent/Mo</span></div>
+        </div>
+      </div>
+
+      <!-- Laundromat Column -->
+      <div class="laundry-col">
+        <div class="laundry-divider">Between Buildings</div>
+        <div class="laundry-card">
+          <div class="laundry-icon">🫧</div>
+          <h4>Laundromat</h4>
+          <p>10 Washers<br>10 Dryers<br>Card/App Pay<br>~320 SF<br>1 Container</p>
+        </div>
+        <div class="laundry-divider">Serves All 20</div>
+      </div>
+
+      <!-- Building B -->
+      <div class="building-card">
+        <div class="building-header">
+          <h3>Building B — Section B</h3>
+          <span class="building-badge">10 Units</span>
+        </div>
+        <div class="floor">
+          <p class="floor-label">Story 2 — Top Floor</p>
+          <div class="units-row">
+            <div class="unit-box top"><div class="unum">B6</div><div class="usf">960 SF</div></div>
+            <div class="unit-box top"><div class="unum">B7</div><div class="usf">960 SF</div></div>
+            <div class="unit-box top"><div class="unum">B8</div><div class="usf">960 SF</div></div>
+            <div class="unit-box top"><div class="unum">B9</div><div class="usf">960 SF</div></div>
+            <div class="unit-box top"><div class="unum">B10</div><div class="usf">960 SF</div></div>
+          </div>
+        </div>
+        <div class="floor">
+          <p class="floor-label">Story 1 — Bottom Floor</p>
+          <div class="units-row">
+            <div class="unit-box"><div class="unum">B1</div><div class="usf">960 SF</div></div>
+            <div class="unit-box"><div class="unum">B2</div><div class="usf">960 SF</div></div>
+            <div class="unit-box"><div class="unum">B3</div><div class="usf">960 SF</div></div>
+            <div class="unit-box"><div class="unum">B4</div><div class="usf">960 SF</div></div>
+            <div class="unit-box"><div class="unum">B5</div><div class="usf">960 SF</div></div>
+          </div>
+        </div>
+        <div class="building-footer">
+          <div class="bstat"><span class="bval">10</span><span class="blbl">Units</span></div>
+          <div class="bstat"><span class="bval">960 SF</span><span class="blbl">Per Unit</span></div>
+          <div class="bstat"><span class="bval">$1,650–$1,750</span><span class="blbl">Est. Rent/Mo</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Office note -->
+    <div style="text-align:center;margin-top:2rem">
+      <div style="display:inline-flex;align-items:center;gap:0.75rem;background:rgba(212,169,41,0.08);border:1px solid rgba(212,169,41,0.2);border-radius:8px;padding:0.875rem 1.5rem">
+        <span style="font-size:1.2rem">🏢</span>
+        <span style="font-size:0.8rem;color:var(--gray)"><strong style="color:var(--gold)">Property Management Office</strong> — ~1,000 SF · 2 ISO containers · 1 story · Separate standalone building · Not connected to A or B · Manages all 20 IronHaus tenants</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- UNIT SPECS -->
+  <section id="specs">
+    <p class="section-eyebrow">Unit Specifications</p>
+    <h2>960 SF — Every Unit</h2>
+    <p class="section-sub">All 20 apartments across both buildings share the same spacious floor plan — 3 ISO containers side by side, 24ft wide × 40ft long, 9ft 6in ceiling.</p>
+
+    <div class="specs-grid">
+      <div class="specs-visual">
+        <div class="floor-plan-header">
+          <h4>FLOOR PLAN — 960 SF</h4>
+          <span class="fp-badge">3 CONTAINERS · 24FT × 40FT</span>
+        </div>
+        <div class="floor-plan-grid">
+          <div class="room living">
+            <div class="room-name">Living Room</div>
+            <div class="room-sf">260 SF</div>
+            <div class="room-detail">Open plan · large windows · 2 ceiling fans · USB outlets</div>
+          </div>
+          <div class="room">
+            <div class="room-name">Kitchen</div>
+            <div class="room-sf">150 SF</div>
+            <div class="room-detail">Island · 4-seat bar · stainless appliances</div>
+          </div>
+          <div class="room bath">
+            <div class="room-name">Bathroom</div>
+            <div class="room-sf">150 SF</div>
+            <div class="room-detail">Full tub/shower combo · quartz vanity</div>
+          </div>
+          <div class="room">
+            <div class="room-name">Bedroom 1</div>
+            <div class="room-sf">200 SF</div>
+            <div class="room-detail">Primary · walk-in closet · king bed fits</div>
+          </div>
+          <div class="room">
+            <div class="room-name">Bedroom 2</div>
+            <div class="room-sf">160 SF</div>
+            <div class="room-detail">Guest / office · double closet</div>
+          </div>
+          <div class="room">
+            <div class="room-name">Entry + Storage</div>
+            <div class="room-sf">40 SF</div>
+            <div class="room-detail">Foyer · coat closet · private entry</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="specs-list">
+          <div class="spec-row"><span class="spec-key">Unit Size</span><span class="spec-val highlight">960 SF</span></div>
+          <div class="spec-row"><span class="spec-key">Containers Per Unit</span><span class="spec-val highlight">3 × ISO 40ft High-Cube</span></div>
+          <div class="spec-row"><span class="spec-key">Dimensions</span><span class="spec-val">24 ft wide × 40 ft long</span></div>
+          <div class="spec-row"><span class="spec-key">Ceiling Height</span><span class="spec-val highlight">9 ft 6 in</span></div>
+          <div class="spec-row"><span class="spec-key">Bedrooms</span><span class="spec-val">2 Bedrooms</span></div>
+          <div class="spec-row"><span class="spec-key">Bathroom</span><span class="spec-val highlight">Full Tub / Shower Combo</span></div>
+          <div class="spec-row"><span class="spec-key">Flooring</span><span class="spec-val">LVP Honey Oak — Waterproof</span></div>
+          <div class="spec-row"><span class="spec-key">Kitchen</span><span class="spec-val">Quartz Counters · White Shaker Cabinets</span></div>
+          <div class="spec-row"><span class="spec-key">Appliances</span><span class="spec-val">Stainless Steel — All 4</span></div>
+          <div class="spec-row"><span class="spec-key">HVAC</span><span class="spec-val">Mini-Split · Gulf Coast Rated</span></div>
+          <div class="spec-row"><span class="spec-key">Laundry</span><span class="spec-val">Shared Laundromat — Card/App</span></div>
+          <div class="spec-row"><span class="spec-key">Windows</span><span class="spec-val">Impact Rated · Hurricane Code</span></div>
+          <div class="spec-row"><span class="spec-key">Exterior</span><span class="spec-val">White Cor-Ten Steel</span></div>
+          <div class="spec-row"><span class="spec-key">Est. Rent Range</span><span class="spec-val gold">$1,500 – $1,750 / month</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINANCIALS -->
+  <section id="financials">
+    <div class="fin-header">
+      <p class="section-eyebrow">Financial Overview</p>
+      <h2>The Numbers</h2>
+      <p class="section-sub" style="margin:0 auto 2.5rem">Build-and-Sell strategy targeting $1,029,822 total profit in 18 months — equivalent to $57,212/month.</p>
+    </div>
+
+    <div class="fin-grid">
+      <div class="fin-card">
+        <div class="fin-icon">🏗️</div>
+        <span class="fin-value">$4.4M</span>
+        <div class="fin-label">Total Project Cost</div>
+        <div class="fin-sub">All 4 buildings · 63 containers</div>
+      </div>
+      <div class="fin-card gold-card">
+        <div class="fin-icon">💼</div>
+        <span class="fin-value">$264K</span>
+        <div class="fin-label">Developer Fee</div>
+        <div class="fin-sub">~$19,000/month · 14 months · from loan</div>
+      </div>
+      <div class="fin-card">
+        <div class="fin-icon">🏠</div>
+        <span class="fin-value">$390K</span>
+        <div class="fin-label">Annual Gross Rent</div>
+        <div class="fin-sub">20 units · avg $1,625/month</div>
+      </div>
+      <div class="fin-card highlight">
+        <div class="fin-icon">📈</div>
+        <span class="fin-value">$251K</span>
+        <div class="fin-label">Annual NOI</div>
+        <div class="fin-sub">Net operating income at stabilization</div>
+      </div>
+      <div class="fin-card">
+        <div class="fin-icon">🏷️</div>
+        <span class="fin-value">$3.87M</span>
+        <div class="fin-label">Sale Price (Month 18)</div>
+        <div class="fin-sub">NOI / 6.5% cap rate · moderate scenario</div>
+      </div>
+      <div class="fin-card gold-card">
+        <div class="fin-icon">🎯</div>
+        <span class="fin-value">~78%</span>
+        <div class="fin-label">Return on Equity</div>
+        <div class="fin-sub">In 18 months · moderate scenario</div>
+      </div>
+    </div>
+
+    <div class="profit-breakdown">
+      <div class="profit-title">YOUR TOTAL PROFIT AT MONTH 18</div>
+      <div class="profit-row">
+        <span class="profit-key">Net Sale Proceeds</span>
+        <span class="profit-val green">$3,755,422</span>
+      </div>
+      <div class="profit-row">
+        <span class="profit-key">Minus Loan Payoff</span>
+        <span class="profit-val" style="color:var(--gray)">($2,989,600)</span>
+      </div>
+      <div class="profit-row">
+        <span class="profit-key">Sale Equity</span>
+        <span class="profit-val green">$765,822</span>
+      </div>
+      <div class="profit-row">
+        <span class="profit-key">Plus Developer Fee (already paid)</span>
+        <span class="profit-val gold">+ $264,000</span>
+      </div>
+      <div class="profit-row total">
+        <span class="profit-key" style="color:var(--white);font-weight:600;font-size:0.9rem">TOTAL PROFIT</span>
+        <span class="profit-val big">$1,029,822</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAUNDROMAT -->
+  <section id="laundromat">
+    <div class="laundromat-grid">
+      <div class="machines-visual">
+        <div class="machines-header">ONSITE LAUNDROMAT — CARD / APP OPERATED</div>
+        <p style="font-size:0.7rem;color:var(--gray);text-align:center;margin-bottom:1rem;letter-spacing:1px">WASHERS</p>
+        <div class="machines-grid">
+          <div class="machine washer"><div class="machine-icon">🫧</div>W1</div>
+          <div class="machine washer"><div class="machine-icon">🫧</div>W2</div>
+          <div class="machine washer"><div class="machine-icon">🫧</div>W3</div>
+          <div class="machine washer"><div class="machine-icon">🫧</div>W4</div>
+          <div class="machine washer"><div class="machine-icon">🫧</div>W5</div>
+          <div class="machine washer"><div class="machine-icon">🫧</div>W6</div>
+          <div class="machine washer"><div class="machine-icon">🫧</div>W7</div>
+          <div class="machine washer"><div class="machine-icon">🫧</div>W8</div>
+          <div class="machine washer"><div class="machine-icon">🫧</div>W9</div>
+          <div class="machine washer"><div class="machine-icon">🫧</div>W10</div>
+        </div>
+        <p style="font-size:0.7rem;color:var(--gray);text-align:center;margin:1rem 0 0.5rem;letter-spacing:1px">DRYERS</p>
+        <div class="machines-grid">
+          <div class="machine dryer"><div class="machine-icon">♨️</div>D1</div>
+          <div class="machine dryer"><div class="machine-icon">♨️</div>D2</div>
+          <div class="machine dryer"><div class="machine-icon">♨️</div>D3</div>
+          <div class="machine dryer"><div class="machine-icon">♨️</div>D4</div>
+          <div class="machine dryer"><div class="machine-icon">♨️</div>D5</div>
+          <div class="machine dryer"><div class="machine-icon">♨️</div>D6</div>
+          <div class="machine dryer"><div class="machine-icon">♨️</div>D7</div>
+          <div class="machine dryer"><div class="machine-icon">♨️</div>D8</div>
+          <div class="machine dryer"><div class="machine-icon">♨️</div>D9</div>
+          <div class="machine dryer"><div class="machine-icon">♨️</div>D10</div>
+        </div>
+        <div class="machines-label">
+          <span>10 Commercial Washers</span>
+          <span>10 Commercial Dryers</span>
+        </div>
+        <div class="pay-badge">
+          <h5>Payment System</h5>
+          <p>Card / App Tap-to-Pay · CSC ServiceWorks · PayRange · LaundryView · No Coins</p>
+        </div>
+      </div>
+
+      <div>
+        <p class="section-eyebrow">Onsite Amenity</p>
+        <h2>Shared Laundromat</h2>
+        <p class="section-sub">One ISO container between the buildings — 10 washers, 10 dryers, card/app payments. Every tenant uses it. Every cycle generates income for IronHaus Gulf Coast LLC.</p>
+        <div class="laundry-stats">
+          <div class="lstat">
+            <div class="lstat-icon">📍</div>
+            <div class="lstat-text">
+              <h5>Centered Between Buildings A & B</h5>
+              <p>Equal walking distance for all 20 tenants — maximum convenience and usage.</p>
+            </div>
+          </div>
+          <div class="lstat">
+            <div class="lstat-icon">📱</div>
+            <div class="lstat-text">
+              <h5>Cashless Card / App Payment</h5>
+              <p>Tenants pay via smartphone app or tap card. Revenue deposits automatically to IronHaus account daily.</p>
+            </div>
+          </div>
+          <div class="lstat">
+            <div class="lstat-icon">💵</div>
+            <div class="lstat-text">
+              <h5>~$1,258/Month Net Income</h5>
+              <p>After operating costs. Adds $150,000–$280,000 to property sale price at a 6.5% cap rate.</p>
+            </div>
+          </div>
+          <div class="lstat">
+            <div class="lstat-icon">🔩</div>
+            <div class="lstat-text">
+              <h5>Built in 1 ISO 40ft Container</h5>
+              <p>~320 SF · Same white Cor-Ten exterior as both apartment buildings · 1 story · On same property.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- PHOTO GALLERY -->
+  <section id="gallery">
+    <div class="gallery-header">
+      <p class="section-eyebrow">Visual Overview</p>
+      <h2>The Project</h2>
+      <p class="section-sub" style="margin:0 auto 2rem">Container apartment construction, Gulf Coast living, and the IronHaus coastal aesthetic.</p>
+    </div>
+    <div class="gallery-grid">
+
+      <!-- TALL left -->
+      <div class="gallery-item tall">
+        <div class="gal-placeholder tall">
+          <div class="gal-icon">🏗️</div>
+          <div class="gal-title">Container Stack</div>
+          <div class="gal-sub">Two-story ISO container building — coastal white exterior</div>
+        </div>
+        <div class="gallery-caption"><span>BUILD</span> · Two-Story Container Structure</div>
+      </div>
+
+      <!-- Top middle -->
+      <div class="gallery-item">
+        <div class="gal-placeholder reg">
+          <div class="gal-icon">🏖️</div>
+          <div class="gal-title">Gulf Coast Location</div>
+          <div class="gal-sub">Mississippi Gulf Coast · 1–2 blocks from Gulf beach</div>
+        </div>
+        <div class="gallery-caption"><span>LOCATION</span> · Mississippi Gulf Coast</div>
+      </div>
+
+      <!-- Top right -->
+      <div class="gallery-item">
+        <div class="gal-placeholder reg">
+          <div class="gal-icon">🌴</div>
+          <div class="gal-title">Tropical Exterior</div>
+          <div class="gal-sub">White Cor-Ten steel · palm landscaping · coastal aesthetic</div>
+        </div>
+        <div class="gallery-caption"><span>DESIGN</span> · White Coastal Tropical</div>
+      </div>
+
+      <!-- Bottom wide (middle + right) -->
+      <div class="gallery-item wide">
+        <div class="gal-placeholder wide">
+          <div class="gal-icon">🛋️</div>
+          <div class="gal-title">960 SF Interior</div>
+          <div class="gal-sub">LVP flooring · quartz counters · white shaker cabinets · 9ft 6in ceilings · open plan living</div>
+        </div>
+        <div class="gallery-caption"><span>INTERIOR</span> · 960 SF Open-Plan Living · 2 Bedrooms</div>
+      </div>
+
+      <!-- Bottom row -->
+      <div class="gallery-item">
+        <div class="gal-placeholder reg">
+          <div class="gal-icon">🛁</div>
+          <div class="gal-title">Tub / Shower Combo</div>
+          <div class="gal-sub">Full bathtub with showerhead · subway tile · brushed nickel · every unit</div>
+        </div>
+        <div class="gallery-caption"><span>BATHROOM</span> · Full Tub/Shower Every Unit</div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="gal-placeholder reg">
+          <div class="gal-icon">🫧</div>
+          <div class="gal-title">Onsite Laundromat</div>
+          <div class="gal-sub">10 washers + 10 dryers · card/app payment · between buildings</div>
+        </div>
+        <div class="gallery-caption"><span>AMENITY</span> · Card/App Laundromat</div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="gal-placeholder reg">
+          <div class="gal-icon">🏢</div>
+          <div class="gal-title">Management Office</div>
+          <div class="gal-sub">~1,000 SF · 3 offices · conference room · same property</div>
+        </div>
+        <div class="gallery-caption"><span>OFFICE</span> · Property Management HQ</div>
+      </div>
+
+    </div>
+    <p style="text-align:center;font-size:0.7rem;color:var(--gray);margin-top:1.5rem;font-family:'DM Mono',monospace;letter-spacing:2px">RENDERINGS AND FINAL PHOTOGRAPHY AVAILABLE UPON PROJECT COMPLETION · MARCH 2026</p>
+  </section>
+
+  <!-- DOWNLOAD -->
+  <section id="download">
+    <div class="download-inner">
+      <div class="download-text">
+        <h3>Download the Full Proposal Package</h3>
+        <p>The complete IronHaus Gulf Coast investor and lender package includes a 15-section business proposal, 25-year cash flow model, 10-slide pitch deck, and Letter of Intent template — everything needed to evaluate this investment opportunity.</p>
+        <div class="download-badges">
+          <span class="download-badge">📄 Business Proposal</span>
+          <span class="download-badge">📊 Pitch Deck</span>
+          <span class="download-badge">📈 Cash Flow Model</span>
+          <span class="download-badge">📋 LOI Template</span>
+        </div>
+      </div>
+      <div class="download-btns">
+        <button class="btn-download" onclick="handleDownload('proposal')">
+          ⬇ Download Full Proposal
+        </button>
+        <button class="btn-download gold" onclick="handleDownload('pitch')">
+          ⬇ Download Pitch Deck
+        </button>
+        <p class="download-note">Confidential · For qualified investors & lenders only</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-inner">
+      <p class="section-eyebrow">Get In Touch</p>
+      <h2>Request the Full Proposal</h2>
+      <p class="section-sub">Contact Shedrick Peters directly to receive the complete 15-section business proposal, cash flow model, and pitch deck for IronHaus Gulf Coast.</p>
+      <div class="contact-cards">
+        <div class="contact-card">
+          <div class="cc-icon">📧</div>
+          <div class="cc-label">Email</div>
+          <div class="cc-val"><a href="mailto:info@ironhausgulfcoast.com">info@ironhausgulfcoast.com</a></div>
+        </div>
+        <div class="contact-card">
+          <div class="cc-icon">📞</div>
+          <div class="cc-label">Phone</div>
+          <div class="cc-val">(228) 731-6660</div>
+        </div>
+        <div class="contact-card">
+          <div class="cc-icon">📍</div>
+          <div class="cc-label">Location</div>
+          <div class="cc-val">Pass Christian, Mississippi</div>
+        </div>
+      </div>
+      <p class="confidential-note">
+        <strong style="color:var(--white)">CONFIDENTIAL</strong> — This website and all associated materials are prepared solely for qualified investors and lenders. All financial projections are estimates based on current Mississippi Gulf Coast market conditions and are subject to change. IronHaus Gulf Coast LLC · Shedrick Peters, Managing Member · March 2026
+      </p>
+
+      <!-- CONTACT FORM -->
+      <div class="contact-form-wrap">
+        <div class="form-title">SEND A MESSAGE</div>
+        <form id="contact-form">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="fname">Your Name</label>
+              <input type="text" id="fname" placeholder="Full Name" required>
+            </div>
+            <div class="form-group">
+              <label for="femail">Email Address</label>
+              <input type="email" id="femail" placeholder="your@email.com" required>
+            </div>
+            <div class="form-group">
+              <label for="fphone">Phone Number</label>
+              <input type="tel" id="fphone" placeholder="(228) 731-6660">
+            </div>
+            <div class="form-group">
+              <label for="ftype">I Am A...</label>
+              <select id="ftype">
+                <option value="">Select one</option>
+                <option value="lender">Lender / Bank</option>
+                <option value="investor">Private Investor</option>
+                <option value="equity">Equity Partner</option>
+                <option value="agent">Real Estate Agent</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group full">
+              <label for="fmsg">Message</label>
+              <textarea id="fmsg" placeholder="I am interested in learning more about IronHaus Gulf Coast..."></textarea>
+            </div>
+          </div>
+          <button type="submit" class="form-submit">⬇ Send Message to Shedrick Peters</button>
+        </form>
+        <div id="form-success" class="form-success">
+          <div class="check">✅</div>
+          <h4>Message Received!</h4>
+          <p>Thank you for your interest in IronHaus Gulf Coast.<br>Shedrick Peters will contact you within 24 hours.<br><br>
+          <strong style="color:var(--teal2)">info@ironhausgulfcoast.com · (228) 731-6660</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">IRON<span>HAUS</span> Gulf Coast LLC</div>
+    <div class="footer-copy">© 2026 IronHaus Gulf Coast LLC · Shedrick Peters, Managing Member · Pass Christian, MS</div>
+    <div class="footer-links">
+      <a href="#home">Home</a>
+      <a href="#buildings">Buildings</a>
+      <a href="#financials">Financials</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </footer>
+
+
+  <script>
+    function handleDownload(type) {
+      // When you have real files hosted, replace these URLs
+      const files = {
+        proposal: { name:'IRONHAUS_GULF_COAST_Proposal.pdf', msg:'Business Proposal' },
+        pitch:    { name:'IRONHAUS_PitchDeck.pdf',           msg:'Pitch Deck' },
+      };
+      const f = files[type];
+      // Show confirmation message
+      const btn = event.currentTarget;
+      const orig = btn.innerHTML;
+      btn.innerHTML = '✅ Sending to ' + btn.closest('.download-btns').previousElementSibling.querySelector('h3').textContent;
+      btn.innerHTML = '✅ Request Sent — Check Your Email';
+      btn.style.opacity = '0.7';
+      setTimeout(() => { btn.innerHTML = orig; btn.style.opacity = '1'; }, 3000);
+      // In production: replace this with a real download link or email trigger
+      alert('To receive the ' + f.msg + ', please email:\n\ninfo@ironhausgulfcoast.com\n\nOr call (228) 731-6660\n\nShedrick Peters · Managing Member · IronHaus Gulf Coast LLC');
+    }
+
+    // Contact form handler
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('contact-form');
+      if (!form) return;
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name  = form.querySelector('#fname').value.trim();
+        const email = form.querySelector('#femail').value.trim();
+        const type  = form.querySelector('#ftype').value;
+        const msg   = form.querySelector('#fmsg').value.trim();
+        if (!name || !email) { alert('Please fill in your name and email.'); return; }
+        // Show success
+        form.style.display = 'none';
+        document.getElementById('form-success').style.display = 'block';
+        // In production: POST to your email service (Formspree, EmailJS, etc.)
+        console.log('Form submission:', { name, email, type, msg });
+      });
+    });
+  </script>
+
+</body>
+</html>
